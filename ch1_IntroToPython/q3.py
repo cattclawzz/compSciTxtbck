@@ -6,6 +6,7 @@ a triangle
 a small circle
 and a larger circle
 '''
+from math import sqrt
 
 def face():
     print(':)')
@@ -26,8 +27,18 @@ def triangle(size):
         print(f"{' '*i}/{' '*j}\\")
     print(f"/{'_'*(size-1)*2}\\")
 
-def circle():
-    pass
+def circle(diameter):
+    if diameter % 1 == 1:
+        diameter += 1
+    mid = (diameter // 2)
+    for x in range(diameter):
+        for y in range(diameter):
+            distance = sqrt( (abs(x-mid)**2) + (abs(y-mid)**2))
+            if distance <= diameter//2:
+                print('* ', end='')
+            else:
+                print('  ', end='')
+        print()
 
 face()
 print()
@@ -35,3 +46,6 @@ x(8)
 print()
 triangle(5)
 print()
+circle(7)
+print()
+circle(19)
