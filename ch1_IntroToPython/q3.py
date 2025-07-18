@@ -10,16 +10,28 @@ and a larger circle
 def face():
     print(':)')
 
-def x(size): #fix this
-    half = int(size //2)
-    for i in range(half):
-        print(f"{' '*i}\\{' '*(size-((i+1)*2))}/")
-
+def x(size):
+    half = size//2
+    for i,j in zip(range(half),range(size-2,-2,-2)):
+        print(f"{' '*i}\\{' '*j}/")
+    
     if size%2 == 1:
         print(f"{'X':>{half+1}}")
 
-    for i in reversed(range(half)):
-        print(f"{' '*i}/{' '*(size-((i+1)*2))}\\")
+    for i,j in zip(range(half-1,-1,-1),range(0+(size%2),(half*2)+2+(size%2),2)):
+        print(f"{' '*i}/{' '*j}\\")
+
+def triangle(size):
+    for i,j in zip(range(size-1,0,-1),range(0,(size+1)*2,2)):
+        print(f"{' '*i}/{' '*j}\\")
+    print(f"/{'_'*(size-1)*2}\\")
+
+def circle():
+    pass
 
 face()
-x(5)
+print()
+x(8)
+print()
+triangle(5)
+print()
